@@ -12,15 +12,39 @@ public class Main {
         System.out.println("Hello World...!");
         String[] studentsArray = {"John", "Riya", "Mac", "Akiva"};
         Student[] tempStudentObjArray = builtObjectArray(studentsArray);
+
+//-------------------ArrayList---------------------------
         ArrayList<Student> tempStudentArrayList = buildArrayList(tempStudentObjArray);
         displayArrayList(tempStudentArrayList);
         deleteArrayList(tempStudentArrayList);
         displayArrayList(tempStudentArrayList);
 
-//--------------------HashMap----------------------------------
-//        HashMap<Integer, Student> tempMap = buildHashMap(tempStudentObjArray);
-//        displayHashMap(tempMap);
+//-------------------StringBuffer---------------------------
+        StringBuffer tempStudentStringBuffer = buildStingBuffer(tempStudentObjArray);
+        displayStringBuffer(tempStudentStringBuffer);
+//        StringBuffer testSB = new StringBuffer();
+//        testSB.append("Sagar Mangulkar");
+//        System.out.println(testSB.toString().split(" ")[0]);
 
+//--------------------HashMap----------------------------------
+        HashMap<Integer, Student> tempMap = buildHashMap(tempStudentObjArray);
+        displayHashMap(tempMap);
+
+    }
+
+    private static void displayStringBuffer(StringBuffer tempStudentStringBuffer) {
+        System.out.println("-----------StringBuffer------------");
+        System.out.println(tempStudentStringBuffer.toString());
+    }
+
+    private static StringBuffer buildStingBuffer(Student[] tempStudentObjArray) {
+        StringBuffer studentStringBuffer = new StringBuffer();
+        int i = 0;
+//        System.out.println("Student Object Array Length: "+tempStudentObjArray.length);
+        for (Student s: tempStudentObjArray) {
+            studentStringBuffer.append(tempStudentObjArray[i++].getName()+" ");
+        }
+        return studentStringBuffer;
     }
 
     private static ArrayList<Student> deleteArrayList(ArrayList<Student> tempStudentArrayList) {
@@ -31,6 +55,9 @@ public class Main {
 
     private static void displayArrayList(ArrayList<Student> tempStudentArrayList) {
         System.out.println("-----------ArrayList------------");
+        if(tempStudentArrayList.size() == 0){
+            System.out.println("ArrayList is Empty.");
+        }
         for (int i = 0; i < tempStudentArrayList.size(); i++) {
             System.out.println(i + " | " + tempStudentArrayList.get(i).getName());
         }
